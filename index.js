@@ -2,6 +2,7 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const { runAllCommand } = require('./command/command');
 const commandReducer = require('./command/command.reducer');
 const config = require('./config/config');//env
+const logger = require('./config/logger');
 
 
 (startBot = async () => {
@@ -25,6 +26,5 @@ const config = require('./config/config');//env
   client.login(config.botToken);
   await runAllCommand(config.botToken, config.clientId)
 
-  console.log('Bot Discord is running')
-  
+  logger.info(`Bot Discord collect feedback is running...`)
 })()

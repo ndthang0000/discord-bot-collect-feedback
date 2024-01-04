@@ -20,6 +20,7 @@ if (error) {
 }
 
 module.exports = {
+  env:'development',
   botToken: envVars.BOT_TOKEN,
   clientId: envVars.CLIENT_ID,
   apiAccessToken: envVars.API_ACCESS_TOKEN,
