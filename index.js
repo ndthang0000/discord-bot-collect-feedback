@@ -1,9 +1,8 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-const { collectFeedbackCommand, runAllCommand } = require('./command/command');
+const { runAllCommand } = require('./command/command');
 const commandReducer = require('./command/command.reducer');
-require('dotenv').config();
-const BOT_TOKEN = process.env.BOT_TOKEN;
-const CLIENT_ID = process.env.CLIENT_ID;
+const config = require('./config/config');//env
+
 
 (startBot = async () => {
   const client = new Client({
@@ -21,12 +20,11 @@ const CLIENT_ID = process.env.CLIENT_ID;
     message.reply(`Hi ${message.author.displayName || message.author.username}, please using command “/feedback <comment>” to send your feedback`)
   })
 
-  client.on('interactionCreate', interaction => {
-    console.log(interaction.commandName)
-    commandReducer(interaction)
-  })
+  client.on('interactionCreate', commandReducer) //command
 
-  client.login(BOT_TOKEN);
-  await runAllCommand(BOT_TOKEN, CLIENT_ID)
+  client.login(config.botToken);
+  await runAllCommand(config.botToken, config.clientId)
+
   console.log('Bot Discord is running')
+  
 })()
