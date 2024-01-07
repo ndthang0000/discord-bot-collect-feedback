@@ -8,7 +8,9 @@ const runAllCommand = async (token, clientId) => {
   try {
     const allCommand =[COLLECT_FEEDBACK]
     await rest.put(Routes.applicationCommands(clientId), { body: allCommand }); // add command here
-    logger.info(`Command [${allCommand.map(item=>item.name).join(', ')}] is running`)
+
+    logger.info(`Command [${allCommand.map(item => item.name).join(', ')}] is running`)
+    
   } catch (error) {
     console.error(error);
   }

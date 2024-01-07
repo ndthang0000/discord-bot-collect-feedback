@@ -24,6 +24,7 @@ const logger = require('./config/logger');
   client.on('interactionCreate', commandReducer) //command
 
   client.login(config.botToken);
+  
   await runAllCommand(config.botToken, config.clientId)
 
   logger.info(`Bot Discord collect feedback is running...`)

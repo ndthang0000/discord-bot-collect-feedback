@@ -1,6 +1,6 @@
-const { createNewComment } = require("../api/comment");
-const logger = require("../config/logger");
-const { COLLECT_FEEDBACK } = require("./constants");
+const { createNewComment } = require('../api/comment');
+const logger = require('../config/logger');
+const { COLLECT_FEEDBACK } = require('./constants');
 
 const commandReducer = async (interaction) => {
   switch (interaction.commandName) {
@@ -10,20 +10,25 @@ const commandReducer = async (interaction) => {
         interaction.reply(`Your opinion is not empty`)
       }
       logger.info(`${interaction.user.id} feedback with content: ${content}`)
-      const body = {
+
+      const bodyRequest = {
         comment: content,
         discordUserId: interaction.user.id,
         discordUsername: interaction.user.username,
         discordChanelId: interaction.channelId,
       }
-      const response = await createNewComment(body)
+
+      const response = await createNewComment(bodyRequest)
       if (!response.status) {
         return interaction.reply(`An error has occurred, please contact support to help`)
       }
       interaction.reply(`Thanks for reaching out! We’ll be passing this along to the team directly! Good luck playing the game!`)
       break;
+    
     // another case
+
     default:
+      return interaction.reply(`Command is invalid, please contact support to help`)
       break;
   }
 

@@ -10,8 +10,9 @@ Set the environment variables:
 ```bash
 cp .env.example .env
 ```
-- You can get API_ACCESS_TOKEN by via https://api-discord-bot.catstudy.click/v1/docs.
+- API_ACCESS_TOKEN: You can get by via https://api-discord-bot.catstudy.click/v1/docs.
 - BOT_TOKEN: is a token of discord bot
+- CLIENT_ID: get in your OAuth2 in portal discord
 # Running the project:
 
 ```bash

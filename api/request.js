@@ -8,7 +8,7 @@ const request = axios.create({
   headers: {
     'Content-type': 'application/json',
     'x-api-key':config.apiAccessToken
-  },
+  }, 
   timeout: 10000,
   validateStatus(status) {
     return status >= 200 && status <= 300;
